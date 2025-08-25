@@ -113,7 +113,7 @@
 }
 /* =======================
    About: Scroll reveal (drop-in)
-   Paste at the end of Index.css
+   Paste at the end of index.css
 ======================= */
 @media (prefers-reduced-motion: no-preference){
     /* Use same stagger var as Services; if .reveal already sets it, this is harmless */
