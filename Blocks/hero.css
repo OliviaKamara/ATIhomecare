@@ -1,0 +1,37 @@
+@keyframes fade-up{ from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none} }
+.hero__content{ animation:fade-up .55s var(--ease) both .05s; }
+@media (prefers-reduced-motion: reduce){ .hero__content{ animation:none; } }
+
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    position:relative; min-height:62vh; display:grid; place-items:center;
+    background: #fff;
+}
+.hero__img{
+    position:absolute; inset:0;
+    background:url(/Images/national-cancer-institute-BxXgTQEw1M4-unsplash.jpg) center/cover no-repeat;
+    filter:saturate(90%) contrast(95%);
+}
+.hero__veil{
+    position:absolute; inset:0;
+    /* left-to-right white fade */
+    background:linear-gradient(90deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.72) 46%, rgba(255,255,255,0) 100%);
+}
+.hero__content{ position:relative; text-align:left; color:var(--ink); left: 30px;}
+.hero h1{ font-weight:400; letter-spacing:.4px; margin:0 0 .75rem; line-height:1.05; font-size: 50px; }
+.hero .accent{ color:green; } /* swap to another brand accent if you prefer */
+.hero p{ max-width:58ch; margin:0 0 1.2rem; line-height:1.6; font-size: 24px; }
+.hero__actions{ display:flex; gap:.75rem; flex-wrap:wrap; }
+
+/* Buttons reused in hero */
+.btn{
+    display:inline-block; padding:.9rem 1.2rem; border-radius:12px;
+    font-family:"Aboreto", system-ui; text-decoration:none; transition:opacity .2s ease;
+}
+.btn--primary{ background:var(--green); color:#fff; }
+.btn--primary:hover{ opacity:.9; }
+.btn--ghost{ border:1px solid var(--green); color:var(--green); background:transparent; }
+.btn--ghost:hover{ background:rgba(26,121,20,.06); }
+

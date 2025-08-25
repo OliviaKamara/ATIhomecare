@@ -1,0 +1,66 @@
+/* =======================
+   Nav (CSS-only menu)
+======================= */
+
+/* Details wrapper for menu */
+.menu{ position:relative; }
+
+/* Hamburger trigger (summary) – hidden on desktop */
+.menu-toggle{
+    display:none;
+    background:transparent; border:0; cursor:pointer; padding:.5rem;
+    list-style:none;
+}
+.menu-toggle::-webkit-details-marker{ display:none; } /* Safari */
+
+.menu > .navbar{ display:flex; }
+
+.navbar{
+    display:flex; align-items:center;
+    gap:clamp(1rem, 6vw, 3rem);
+    padding:0; font-size:1.2rem; flex-wrap:wrap;
+}
+.navlink{
+    color:#000; text-decoration:none; font-family:"Aboreto", system-ui;
+    position:relative; transition:color .2s ease;
+    animation:calm-fade .40s var(--ease) both;
+}
+.navlink:hover{ text-decoration:underline; color:var(--green); }
+
+.cta-btn{
+    display:inline-block; padding:.75rem 1.1rem; border-radius:10px;
+    background:var(--green); color:#fff; text-decoration:none;
+    font-family:"Aboreto", system-ui; transition:opacity .2s ease;
+}
+.cta-btn:hover{ opacity:.9; }
+
+/* Staggered animation delays */
+.navbar .navlink:nth-child(1){ animation-delay:.08s; }
+.navbar .navlink:nth-child(2){ animation-delay:.12s; }
+.navbar .navlink:nth-child(3){ animation-delay:.16s; }
+.navbar .navlink:nth-child(4){ animation-delay:.20s; }
+
+@media (prefers-reduced-motion: reduce){
+    .navbar .navlink{ animation:none !important; }
+}
+
+/* Desktop vs Mobile */
+@media (min-width: 901px){
+    .menu:not([open]) > .navbar { display: flex !important; }
+    .menu-toggle { display: none !important; }
+}
+
+@media (max-width: 900px){
+    .menu-toggle{ display:inline-flex; margin-bottom:1rem; }
+
+    .menu > .navbar{
+        display:none;
+        position:absolute; top:100%; left:50%; transform:translateX(-50%);
+        background:rgba(247,224,222,.95);
+        border:1px solid #E69b97; border-radius:10px;
+        padding:1rem; gap:1rem; flex-direction:column; align-items:center;
+        box-shadow:0 10px 24px rgba(0,0,0,.12);
+        z-index:999;
+    }
+    .menu[open] > .navbar{ display:flex; }
+}

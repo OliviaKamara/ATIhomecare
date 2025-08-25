@@ -1,0 +1,100 @@
+.contact{
+    background:#fff;
+    padding: clamp(40px, 6vw, 96px) 0;
+    color: var(--ink);
+}
+.contact__grid{
+    display:grid;
+    grid-template-columns: 1fr;   /* header → cards → map */
+    gap: clamp(18px, 3vw, 28px);
+}
+
+/* Headings */
+.contact__eyebrow{
+    font-size:.9rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--green);
+    margin:0 0 .4rem;
+}
+.contact__title{
+    font-size: clamp(28px, 3.6vw, 40px);
+    font-weight:400;
+    color:#0f3f0c;
+    margin:0 0 .6rem;
+    position:relative;
+    display:inline-block;
+}
+@media (prefers-reduced-motion: no-preference){
+    .contact__title::after{
+        content:""; position:absolute; left:0; bottom:-8px;
+        width:100%; height:2px; background:var(--green);
+        transform:scaleX(0); transform-origin:left;
+        transition:transform .6s var(--ease);
+    }
+    .contact__title.reveal.in::after{ transform:scaleX(1); }
+}
+.contact__intro{ margin:0; max-width:58ch; line-height:1.6; }
+
+/* Cards row */
+.contact__cards{
+    display:grid;
+    grid-template-columns: 1fr;                    /* mobile: stack */
+    gap: 60px;
+    justify-content:center;
+    margin-top: clamp(14px, 2vw, 22px);
+    align-items: center;
+}
+@media (min-width: 980px){
+    .contact__cards{
+        grid-template-columns: repeat(2, minmax(360px, 520px));  /* two even cards */
+        align-items: stretch;                                    /* equal height */
+        max-width: 1160px;                                       /* tidy row width */
+        margin-inline:auto;
+    }
+}
+
+/* Card */
+.contact__card{
+    background:#fafafa;
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:16px;
+    padding: clamp(16px, 2.2vw, 22px);
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    width:100%;
+}
+.contact__card-title{
+    margin:0 0 .25rem;
+    font-weight:600;
+    color:#0f3f0c;
+}
+.contact__person{ margin:.2rem 0 .2rem; }
+
+/* List */
+.contact__list{
+    list-style:none; margin:.75rem 0 0; padding:0;
+    display:grid; gap:.65rem;
+}
+.contact__item{ display:flex; gap:.6rem; align-items:flex-start; }
+.contact__icon{ width:1.25rem; display:inline-flex; justify-content:center; }
+.contact__list a{
+    color:inherit; text-decoration:none; border-bottom:1px solid rgba(26,121,20,.2);
+}
+.contact__list a:hover{ color:var(--green); border-color:var(--green); }
+
+/* Buttons group inside card */
+.contact__cta{ display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem; }
+
+/* Map */
+.contact__map{
+    margin:0;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 16px 40px rgba(0,0,0,.12);
+}
+.contact__map iframe{ width:100%; height:360px; border:0; display:block; }
+
+/* Reveal timing (uses your global .reveal/.in rules) */
+@media (prefers-reduced-motion: no-preference){
+    .contact .reveal{ transition-delay: calc(var(--stagger, 0) * 60ms); }
+}
